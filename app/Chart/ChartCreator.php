@@ -64,4 +64,14 @@ class ChartCreator
 
     }
 
+    public function chartBorders(): void
+    {
+
+        imagefilledrectangle($this->generatedChart, 1, 1, $this->spaceWidth - 2, $this->spaceHeight - 2, $this->borderColor);
+        imagefilledrectangle($this->generatedChart, $this->spaceBorders, $this->spaceBorders, $this->spaceWidth - 1 - $this->spaceBorders, $this->spaceHeight - 1 - $this->spaceBorders, $this->backgroundColor);
+
+    }
+
+
+
 }
