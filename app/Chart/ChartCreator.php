@@ -53,5 +53,15 @@ class ChartCreator
         $this->chartDistance = ($this->chartWidth - $this->chartBarCount * $this->chartBarWidth) / ($this->chartBarCount + 1);
 
     }
-    
+
+    public function chartColors(): void
+    {
+
+        $this->backgroundColor = imagecolorallocate($this->generatedChart, 255, 255, 255);
+        $this->borderColor = imagecolorallocate($this->generatedChart, 66, 63, 62);
+        $this->lineColor = imagecolorallocate($this->generatedChart, 0, 0, 0);
+        $this->barColor = imagecolorallocate($this->generatedChart, 225, 96, 86);
+
+    }
+
 }
