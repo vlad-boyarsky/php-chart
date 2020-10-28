@@ -6,20 +6,7 @@ namespace App\Chart;
 class ChartCreator
 {
 
-    protected array $monthValues = [
-        "Jan" => 31,
-        "Feb" => 33,
-        "Mar" => 35,
-        "Apr" => 31,
-        "May" => 41,
-        "Jun" => 41,
-        "Jul" => 42,
-        "Aug" => 27,
-        "Sep" => 45,
-        "Oct" => 28,
-        "Nov" => 55,
-        "Dec" => 20,
-    ];
+    protected array $monthValues = [];
 
     protected float $spaceWidth = 1245;
     protected float $spaceHeight = 600;
@@ -41,6 +28,11 @@ class ChartCreator
     protected float $chartBarWidth = 40;
     protected float $chartHorizontalLines;
     protected float $chartHorizontalDstance;
+
+    public function setMonthValues($values)
+    {
+        return $this->monthValues = $values;
+    }
 
     public function chartSpace(): void
     {
@@ -72,6 +64,47 @@ class ChartCreator
 
     }
 
+    public function chartEmploy(): void
+    {
+        $max_value = max($this->monthValues);
+        $this->chartRatio = $this->chartHeight / $max_value;
 
+        $this->chartHorizontalLines = 20;
+        $this->chartHorizontalDstance = $this->chartHeight / $this->chartHorizontalLines;
+
+        for ($i = 1; $i <= $this->chartHorizontalLines; $i++) {
+
+            $y = $this->spaceHeight - $this->spaceBorders - $this->chartHorizontalDstance * $i;
+            imageline($this->generatedChart, $this->spaceBorders, $y, $this->spaceWidth - $this->spaceBorders, $y, $this->lineColor);
+            $v = intval($this->chartHorizontalDstance * $i / $this->chartRatio);
+            imagestring($this->generatedChart, 10, 5, $y - 5, $v, $this->barColor);
+
+        }
+    }
+
+    public function chartDraw(): void
+    {
+        $monthKey = [];
+        $statisticsValue = [];
+        for ($i = 0; $i < $this->chartBarCount; $i++) {
+
+            $topTextPosition = $this->spaceBorders + $this->chartDistance + $i * ($this->chartDistance + $this->chartBarWidth);
+            $bottomTextPosition = $topTextPosition + $this->chartBarWidth;
+            $getBarHeightPosition = $this->spaceHeight - $this->spaceBorders;
+
+            foreach ($this->monthValues as $key => $value) {
+                $statisticsValue[] = $value;
+                $monthKey[] = $key;
+                $getBarHeight = $this->spaceBorders + $this->chartHeight - intval($statisticsValue[$i] * $this->chartRatio);
+                imagestring($this->generatedChart, 10, $topTextPosition + 10, 20, $statisticsValue[$i], $this->barColor);
+                imagestring($this->generatedChart, 10, $topTextPosition + 10, $this->spaceHeight - 30, $monthKey[$i], $this->barColor);
+            }
+
+            imagefilledrectangle($this->generatedChart, $topTextPosition, $getBarHeight, $bottomTextPosition, $getBarHeightPosition, $this->barColor);
+
+        }
+
+        imagepng($this->generatedChart);
+    }
 
 }
