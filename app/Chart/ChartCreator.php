@@ -1,14 +1,11 @@
 <?php
 
-
-namespace App\Chart;
-
 class ChartCreator
 {
 
     protected array $monthValues = [];
 
-    protected float $spaceWidth = 1245;
+    protected float $spaceWidth = 800;
     protected float $spaceHeight = 600;
     protected float $spaceBorders = 40;
 
@@ -29,7 +26,7 @@ class ChartCreator
     protected float $chartHorizontalLines;
     protected float $chartHorizontalDstance;
 
-    public function setMonthValues($values)
+    public function setMonthValues($values): array
     {
         return $this->monthValues = $values;
     }
