@@ -7,7 +7,7 @@ require '../../../app/Chart/ChartCreator.php';
 $fileValues = explode("\n", file_get_contents('date.txt'));
 
 $monthValues = [
-    "Jan" => 0 ,
+    "Jan" => 0,
     "Feb" => 0,
     "Mar" => 0,
     "Apr" => 0,

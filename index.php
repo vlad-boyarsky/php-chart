@@ -7,6 +7,7 @@
     <li><a href="app/View/chart/date.view.php">Date Chart</a></li>
     <li><a href="app/View/chart/html.view.php">HTML Chart</a></li>
     <li><a href="app/View/chart/file.view.php">File Chart</a></li>
+    <li><a href="app/View/chart/upload.view.php">Upload File Chart</a></li>
 </ul>
 </body>
 </html>

@@ -27,4 +27,3 @@ $chart->chartBorders();
 $chart->chartEmploy();
 $chart->chartDraw();
 
-?>
