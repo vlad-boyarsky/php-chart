@@ -4,7 +4,7 @@ header("Content-type:image/png");
 
 require '../../../app/Chart/ChartCreator.php';
 
-$montValues = [
+$monthValues = [
     "Jan" => 0 ,
     "Feb" => 33,
     "Mar" => 35,
@@ -20,7 +20,7 @@ $montValues = [
 ];
 
 $chart = new ChartCreator();
-$chart->setMonthValues($montValues);
+$chart->setMonthValues($monthValues);
 $chart->chartSpace();
 $chart->chartColors();
 $chart->chartBorders();
