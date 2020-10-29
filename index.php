@@ -3,7 +3,10 @@
 <html>
 <title>Chart</title>
 <body>
-    <a href="app/View/ViewDateChart.php">Date Chart</a>
+<ul>
+    <li><a href="app/View/chart/date.view.php">Date Chart</a></li>
+    <li><a href="app/View/chart/html.view.php">HTML Chart</a></li>
+</ul>
 </body>
 </html>
 

@@ -2,7 +2,7 @@
 
 header("Content-type:image/png");
 
-require_once '../Chart/ChartCreator.php';
+require '../../../app/Chart/ChartCreator.php';
 
 $montValues = [
     "Jan" => 0 ,
